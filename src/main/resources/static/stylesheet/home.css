@@ -1,0 +1,143 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+
+main{
+    min-height: 100vh;
+    min-width: 90vw;
+    padding-bottom: 10%;
+
+    background: url(../images/background.jpg) repeat-y;
+    background-size: 100% 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 0.5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-fluid{
+    background: rgb(46, 210, 109);
+}
+
+.navbar{
+    width: 100vw;
+    padding: 0px;
+    /* margin-bottom: 45%; */
+    position: fixed;
+    z-index: 1000;
+}
+
+.result-container{
+    width: 90%;
+    overflow-x: auto;
+    margin-top: 10%;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+.colspan, td, th{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.nav-item:hover, .navbar-brand:hover {
+    background: rgb(185, 200, 69);
+    transition: .5s;
+}
+
+.nav-item{
+    padding: 2% 0px;
+}
+
+.navbar-brand{
+    padding: 1% 0px;
+    cursor: pointer;
+}
+
+.navbar-brand > a{
+    text-decoration: none;
+    color: black;
+}
+
+.account-details, .register-student{
+    width: 60%;
+    height: 95%;
+    opacity: 0.9;
+
+    background: rgb(43, 93, 118);
+    border-radius: 10%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 5px 5px 35px red;
+}
+
+form{
+    width: 50%;
+}
+
+.label-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+
+    color: black;
+    font-weight: 500;
+
+    margin: 5%;
+    width: 100%;
+}
+
+.logged-user{
+    display: flex;
+    align-items: center;
+    width: 15%;
+    background: rgb(233, 143, 41);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    box-shadow: -5px -2px 10px rgb(194, 101, 101);
+}
+
+.username{
+    padding: 0 5%;
+}
+
+.logged-user > .user-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    padding: 0 5%;
+}
+
+.user-icon i{
+    font-size: 26pt;
+    width: 15%;
+    padding: 0px;
+    margin: 0px;
+    color: rgb(18, 107, 185);
+    cursor: pointer;
+}
+
+.footer{
+    min-width: 15px;
+}
+
+#input-table{
+    width: 170px;
+}
+
+#input-table-sexo{
+    width: 35px;
+}
+
+.estudante-list > tr > td > input {
+    border: none;
+}

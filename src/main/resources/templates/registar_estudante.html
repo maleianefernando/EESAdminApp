@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Inicio Admin | Emmanuel English School</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/stylesheet/home.css}">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <span class="navbar-brand"><a th:href="@{/}">Emmanuel English School</a></span>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Estudantes
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" th:href="@{/estudante/registar}">Registar</a></li>
+                          <li><a class="dropdown-item" th:href="@{/estudante/listar}">Listar</a></li>
+                          <li><a class="dropdown-item" th:href="@{/estudante/desempenho}">Desempenho</a></li>
+                          <li><a class="dropdown-item" th:href="@{/estudante/mensalidades}">Mensalidade</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Funcionarios
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" th:href="@{/funcionario/registar}">Registar</a></li>
+                          <li><a class="dropdown-item" th:href="@{/funcionario.listar}">Listar</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/minha_conta/meus_dados}" id="minha-conta">Minha Conta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logged-user">
+            <div sec:authentication="principal.fullName" class="username"></div>
+            <div class="user-icon" id="user-icon">
+                <i class="bi bi-person-circle"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-container" id="main-container">
+        <div class="result-container register-student" id="register-student">
+            <form method="post" class="form" th:object="${estudante}" th:action="@{/estudante/registar/salvar}">
+    
+                <div class="label-form">
+                    <label for="name">Nome completo</label> <input type="text" th:field="*{nomeCompleto}" placeholder="Ex: Filipe Dos Santos" required>
+                </div>
+    
+                <div class="label-form">
+                    <label for="email">Email</label> <input type="text" th:field="*{email}" placeholder="seuemail@gmail.com" required>
+                </div>
+
+                <div class="label-form">
+                    <label for="id">Contacto</label> <input type="tel" th:field="*{numeroCelular}" maxlength="13" placeholder="(+258) 123 456 789" required>
+                </div>
+
+                <div class="label-form">
+                    <label for="birthday">Data de nascimento</label> <input type="date" th:field="*{dataNascimento}" required>
+                </div>
+
+                <div class="label-form">
+                    <label for="sexo">Sexo</label> <select id="sexo" th:field="*{sexo}" placeholder="Ex: M" required select>
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
+                        </select>
+                </div>
+
+                <div class="label-form">
+                    <label for="horario">Horário</label> <input type="time" th:field="*{horario}" step="1800" required>
+                </div>
+
+                <div class="label-form">
+                    <label for="morada">Morada</label> <input type="text" th:field="*{morada}" placeholder="Matola" required>
+                </div>
+    
+                <div class="label-form">
+                    <label for="bairro">Bairro</label> <input type="text" th:field="*{bairro}" placeholder="Liberdade" required>
+                </div>
+
+                <div class="label-form">
+                    <label for="nivel">Nivel</label>
+                    <select name="nivel" id="nivel-list" th:field="*{nivel}" required>
+                        <option value="A1 (Básico)">A1 (Básico)</option>
+                        <option value="B1 (Intermediário)">B1 (Intermediário)</option>
+                        <option value="C1 (Avançado)">C1 (Avançado)</option>
+                        <option value="D1 (Fluente)">D1 (Fluente)</option>
+                        <option value="Aulas domiciliares">Aulas domiciliares</option>
+                        <option value="Inglês para negócios">Inglês para negócios</option>
+                        <option value="Inglês Intensivo">Inglês Intensivo</option>
+                        <option value="Aulas online">Aulas online</option>
+                    </select>
+                </div>
+    
+                <div class="label-form">
+                    <button type="submit" class="btn btn-primary">Salvar alterações</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+
+    </footer>
+
+    <script th:src="@{/javascript/home.js}"></script>
+</body>
+</html>
