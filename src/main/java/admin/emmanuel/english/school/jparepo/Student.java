@@ -1,7 +1,6 @@
 package admin.emmanuel.english.school.jparepo;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +12,10 @@ import lombok.Data;
 @Table(name = "estudante")
 @Data
 public class Student {
+
+    public Student(){
+
+    }
     
     @Id
     private String idEstudante;
@@ -46,4 +49,5 @@ public class Student {
 
     @Column
     private String password;
+
 }

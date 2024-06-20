@@ -62,17 +62,37 @@ public class StudentController {
     }
 
     @GetMapping("/listar")
-    public String listarEstudantes(Model model){
-        List<Student> st = stRepo.findAll();
-        model.addAttribute("estudante", st);
+    public String listarEstudantes(@RequestParam(name = "nivel", required = false, defaultValue = "all") String nivel, Model model){
+
+        if(nivel.equalsIgnoreCase("all")){
+            List<Student> allSt = stRepo.findAll();
+            model.addAttribute("estudante", allSt);
+        }
+        else{
+            List<Student> filteredStudent = stRepo.findByNivel(nivel);
+            model.addAttribute("estudante", filteredStudent);
+        }
+        System.out.println(nivel);
 
         return "lista_estudantes";
+    }
+
+    @PostMapping("/editar")
+    public String editarEstudante(@ModelAttribute("e") List<Student> st){
+        // for(Student s : st){
+        //     System.out.println(s.);
+        // }
+        return "redirect:/lista_estudantes";
     }
 
     @GetMapping("/desempenho")
     public String desempenho(@RequestParam(name="nivel", required=false, defaultValue = "all") String nivel, Model model){
         List<Desempenho> d = desempenhoRepo.findAll();
+        // List<Student> e = stRepo.findByNivel(nivel);
 
+        // for(Desempenho des : d){
+        //     if(des.getIdEstudante().equals(e.)){}
+        // }
         model.addAttribute("notas", d);
         return "desempenho";
     }

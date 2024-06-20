@@ -35,7 +35,7 @@
                         </a>
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" th:href="@{/funcionario/registar}">Registar</a></li>
-                          <li><a class="dropdown-item" th:href="@{/funcionario/listar}">Listar</a></li>
+                          <li><a class="dropdown-item" th:href="@{/funcionario.listar}">Listar</a></li>
                         </ul>
                     </li>
 
@@ -55,56 +55,47 @@
     </nav>
 
     <main class="main-container" id="main-container">
-        <div class="result-container" id="result-container">
-            <table class="table table-bordered border-primary" width="80%" border="1px">
-                <thead class="table table-dark">
-                    <tr>
-                        <th colspan="2">
-                            <form action="">
-                                <select name="nivel" id="desempenho-nivel">
-                                    <option value="all">All</option>
-                                    <option value="A1 (Basico)">A1 (Básico)</option>
-                                    <option value="B1 (Intermediário)">B1 (Intermediário)</option>
-                                    <option value="C1 (Avançado)">C1 (Avançado)</option>
-                                    <option value="D1 (Fluente)">D1 (Fluente)</option>
-                                    <option value="Aulas domiciliares">Aulas domiciliares</option>
-                                    <option value="Inglês Intensivo">Inglês Intensivo</option>
-                                    <option value="Inglês para negócios">Inglês para negócios</option>
-                                    <option value="Aulas online">Aulas online</option>
-                                </select>
-                            </form>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>ID</th>
-                        <th>Teste Escrito 1</th>
-                        <th>Teste Escrito 2</th>
-                        <th>Teste Escrito 3</th>
-                        <th>Teste Oral 1</th>
-                        <th>Teste Oral 2</th>
-                        <th>Teste Oral 3</th>
-                        <th>Teste Oral 4</th>
-                        <th>Teste Oral 5</th>
-                        <th>Media</th>
-                    </tr>
-                </thead>
+        <div class="result-container register-student" id="register-student">
+            <form method="post" class="form" th:object="${funcionario}" th:action="@{/funcionario/registar/salvar}">
+    
+                <div class="label-form">
+                    <label for="name">Nome completo</label> <input type="text" th:field="*{nome}" placeholder="Ex: Filipe Dos Santos" required>
+                </div>
+    
+                <div class="label-form">
+                    <label for="email">Idade</label> <input type="number" th:field="*{idade}" placeholder="26" required>
+                </div>
 
-                <tbody>
-                    <tr th:each="n : ${notas}">
-                        <td th:text="${n.IdEstudante}">ID</td>
-                        <td th:text="${n.testeEscrito1}">0.0</td>
-                        <td th:text="${n.testeEscrito2}">0.0</td>
-                        <td th:text="${n.testeEscrito3}">0.0</td>
-                        <td th:text="${n.testeOral1}">0.0</td>
-                        <td th:text="${n.testeOral2}">0.0</td>
-                        <td th:text="${n.testeOral3}">0.0</td>
-                        <td th:text="${n.testeOral4}">0.0</td>
-                        <td th:text="${n.testeOral5}">0.0</td>
-                        <td th:text="${n.media}">0.0</td>
-                    </tr>
-                </tbody>
-            </table>
+                <div class="label-form">
+                    <label for="docId">Documento de identificacao</label> <input type="text" th:field="*{identificacao}" maxlength="13" placeholder="123001001932B" required>
+                </div>
+
+                <div class="label-form">
+                    <label for="experiencia">Experiencia Profissional</label> <input type="text" th:field="*{experienciaProfissional}" placeholder="proofessor de informatica na UP Maputo" required>
+                </div>
+
+                <div class="label-form">
+                    <label for="habilidades">Habilidades</label> <input type="text" th:field="*{habilidades}" placeholder="Ex: montagem e configuracao de servidores" required>
+                </div>
+
+                <div class="label-form">
+                    <label for="sexo">Funcao</label> <select id="funcao" th:field="*{funcao}" required select>
+                        <option value="Professor">Professor</option>
+                        <option value="Agente de limpeza">Agente de limpeza</option>
+                        <option value="Tecnico de TI">Tecnico de TI</option>
+                        </select>
+                </div>
+ 
+                <div class="label-form">
+                    <button type="submit" class="btn btn-primary">Salvar alterações</button>
+                </div>
+            </form>
+        </div>
     </main>
+
+    <footer class="footer">
+
+    </footer>
 
     <script th:src="@{/javascript/home.js}"></script>
 </body>

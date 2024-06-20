@@ -56,13 +56,13 @@
 
     <main class="main-container" id="main-container">
         <div class="result-container" id="result-container">
-            <form action="" th:object="${e}">
+            <form th:action="@{/estudante/editar}" th:object="${e}" method="post">
             <table class="table table-bordered border-primary" width="80%" border="1px">
                 <thead class="table table-dark">
                     <tr>
                         <th colspan="2">
-                            <form action="">
-                                <select name="nivel">
+                            <!-- <form action=""> -->
+                                <select name="nivel" id="lista-nivel">
                                     <option value="all">All</option>
                                     <option value="A1 (Basico)">A1 (Básico)</option>
                                     <option value="B1 (Intermediário)">B1 (Intermediário)</option>
@@ -73,7 +73,7 @@
                                     <option value="Inglês para negócios">Inglês para negócios</option>
                                     <option value="Aulas online">Aulas online</option>
                                 </select>
-                            </form>
+                            <!-- </form> -->
                         </th>
                     </tr>
                     <tr>
@@ -114,6 +114,7 @@
                         </td> <!--<input type="text" th:value="${e.nivel}" id="input-table">-->
                         <td><input type="text" th:value="${e.horario}" id="input-table"></td>
                     </tr>
+                    <!-- <button type="submit" class="btn btn-primary">Editar</button> -->
                 </tbody>
             </table>
             </form>

@@ -6,6 +6,7 @@ let cronogramaActividadesBtn = document.querySelector('#cronograma_de_actividade
 let proprinasBtn = document.querySelector('#proprinas');
 let materialAcademicoBtn = document.querySelector('#material-academico');
 let logoBtn = document.querySelector('#navbar-brand');
+let filtarLista = document.querySelector('#lista-nivel');
 
 // notasFrequenciaBtn.addEventListener('click', ()=>{
 //     resultContainer.innerHTML = `
@@ -72,29 +73,57 @@ let logoBtn = document.querySelector('#navbar-brand');
 // });
 
 
-cronogramaActividadesBtn.addEventListener('click', ()=>{
-    console.log('crono');
-    resultContainer.innerHTML = `
+try {
+    cronogramaActividadesBtn.addEventListener('click', ()=>{
+        console.log('crono');
+        resultContainer.innerHTML = `
+        
+        `;
+    });
+} catch (error) {
     
-    `;
-});
+}
 
-proprinasBtn.addEventListener('click', ()=>{
-    console.log('prop');
-    resultContainer.innerHTML = `
+try {
+    proprinasBtn.addEventListener('click', ()=>{
+        console.log('prop');
+        resultContainer.innerHTML = `
+        
+        `;
+    });
+} catch (error) {
     
-    `;
-});
+}
 
-materialAcademicoBtn.addEventListener('click', ()=>{
-    console.log('material');
-    resultContainer.innerHTML = `
+try {
+    materialAcademicoBtn.addEventListener('click', ()=>{
+        console.log('material');
+        resultContainer.innerHTML = `
+        
+        `;
+    });
+} catch (error) {
     
-    `;
-});
+}
 
-logoBtn.addEventListener('click', ()=>{
-    resultContainer.innerHTML = `
+try {
+    logoBtn.addEventListener('click', ()=>{
+        resultContainer.innerHTML = `
+        
+        `;
+    });
+} catch (error) {
     
-    `;
-});
+}
+
+try {
+    filtarLista.addEventListener('change', ()=>{
+        const selectedValue = event.target.value;
+        
+        if(selectedValue){
+            window.location.href = `listar?nivel=${selectedValue}`;
+        }
+    })
+} catch (error) {
+    console.log(error);
+}
