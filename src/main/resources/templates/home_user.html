@@ -29,7 +29,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Funcionarios
                         </a>
@@ -37,7 +37,7 @@
                           <li><a class="dropdown-item" th:href="@{/funcionario/registar}">Registar</a></li>
                           <li><a class="dropdown-item" th:href="@{/funcionario/listar}">Listar</a></li>
                         </ul>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/minha_conta/meus_dados}" id="minha-conta">Minha Conta</a>
@@ -55,48 +55,10 @@
     </nav>
 
     <main class="main-container" id="main-container">
-        <div class="result-container register-student" id="register-student">
-            <form method="post" class="form" th:object="${funcionario}" th:action="@{/funcionario/registar/salvar}">
-    
-                <div class="label-form">
-                    <label for="name">Nome completo</label> <input type="text" th:field="*{nome}" placeholder="Ex: Filipe Dos Santos" required>
-                </div>
-    
-                <div class="label-form">
-                    <label for="email">Idade</label> <input type="number" th:field="*{idade}" placeholder="26" required>
-                </div>
+        <!-- <div class="result-container account-details" id="result-container">
 
-                <div class="label-form">
-                    <label for="docId">Documento de identificacao</label> <input type="text" th:field="*{identificacao}" maxlength="13" placeholder="123001001932B" required>
-                </div>
-
-                <div class="label-form">
-                    <label for="experiencia">Experiencia Profissional</label> <input type="text" th:field="*{experienciaProfissional}" placeholder="proofessor de informatica na UP Maputo" required>
-                </div>
-
-                <div class="label-form">
-                    <label for="habilidades">Habilidades</label> <input type="text" th:field="*{habilidades}" placeholder="Ex: montagem e configuracao de servidores" required>
-                </div>
-
-                <div class="label-form">
-                    <label for="sexo">Funcao</label> <select id="funcao" th:field="*{funcao}" required select>
-                        <option value="Professor">Professor</option>
-                        <option value="Administrador">Administrador</option>
-                        <option value="Agente de limpeza">Agente de limpeza</option>
-                        <option value="Tecnico de TI">Tecnico de TI</option>
-                        </select>
-                </div>
- 
-                <div class="label-form">
-                    <button type="submit" class="btn btn-primary">Salvar alterações</button>
-                </div>
-            </form>
-        </div>
+        </div> -->
     </main>
-
-    <footer class="footer">
-
-    </footer>
 
     <script th:src="@{/javascript/home.js}"></script>
 </body>

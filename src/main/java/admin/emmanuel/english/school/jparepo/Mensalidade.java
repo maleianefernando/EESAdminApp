@@ -12,7 +12,7 @@ import lombok.Data;
 public class Mensalidade {
     
     @Id
-    private String idMensalidade;
+    private Integer idMensalidade;
 
     @Column
     private String idEstudante;

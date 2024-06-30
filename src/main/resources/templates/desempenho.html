@@ -56,12 +56,12 @@
 
     <main class="main-container" id="main-container">
         <div class="result-container" id="result-container">
-            <table class="table table-bordered border-primary" width="80%" border="1px">
-                <thead class="table table-dark">
-                    <tr>
-                        <th colspan="2">
-                            <form action="">
-                                <select name="nivel" id="desempenho-nivel">
+            <form method="post" th:action="@{/estudante/lancar_notas}" th:object="${wrapper}" class="list-est-form">
+                <table class="table table-bordered border-primary" width="80%" border="1px">
+                    <thead class="table table-dark">
+                        <tr>
+                            <th colspan="2">
+                                <select name="nivel" id="select-nivel">
                                     <option value="all">All</option>
                                     <option value="A1 (Basico)">A1 (Básico)</option>
                                     <option value="B1 (Intermediário)">B1 (Intermediário)</option>
@@ -72,38 +72,62 @@
                                     <option value="Inglês para negócios">Inglês para negócios</option>
                                     <option value="Aulas online">Aulas online</option>
                                 </select>
-                            </form>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>ID</th>
-                        <th>Teste Escrito 1</th>
-                        <th>Teste Escrito 2</th>
-                        <th>Teste Escrito 3</th>
-                        <th>Teste Oral 1</th>
-                        <th>Teste Oral 2</th>
-                        <th>Teste Oral 3</th>
-                        <th>Teste Oral 4</th>
-                        <th>Teste Oral 5</th>
-                        <th>Media</th>
-                    </tr>
-                </thead>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Teste Escrito 1</th>
+                            <th>Teste Escrito 2</th>
+                            <th>Teste Escrito 3</th>
+                            <th>Teste Oral 1</th>
+                            <th>Teste Oral 2</th>
+                            <th>Teste Oral 3</th>
+                            <th>Teste Oral 4</th>
+                            <th>Teste Oral 5</th>
+                            <th>Media</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr th:each="n : ${notas}">
-                        <td th:text="${n.IdEstudante}">ID</td>
-                        <td th:text="${n.testeEscrito1}">0.0</td>
-                        <td th:text="${n.testeEscrito2}">0.0</td>
-                        <td th:text="${n.testeEscrito3}">0.0</td>
-                        <td th:text="${n.testeOral1}">0.0</td>
-                        <td th:text="${n.testeOral2}">0.0</td>
-                        <td th:text="${n.testeOral3}">0.0</td>
-                        <td th:text="${n.testeOral4}">0.0</td>
-                        <td th:text="${n.testeOral5}">0.0</td>
-                        <td th:text="${n.media}">0.0</td>
-                    </tr>
-                </tbody>
-            </table>
+                    <tbody>
+                        <tr th:each="n, iterStat : ${wrapper.notas}">
+                            <td>
+                                <input type="text" th:field="*{notas[__${iterStat.index}__].idEstudante}" th:value="${n.idEstudante}" readonly id="input-table">
+                            </td>
+
+                            <td>
+                                <input type="number" th:field="*{notas[__${iterStat.index}__].testeEscrito1}" th:value="${n.testeEscrito1}" id="input-table-notas" step="0.01">
+                            </td>
+
+                            <td>
+                                <input type="number" th:field="*{notas[__${iterStat.index}__].testeEscrito2}" th:value="${n.testeEscrito2}" id="input-table-notas" step="0.01">
+                            </td>
+                            <td>
+                                <input type="number" th:field="*{notas[__${iterStat.index}__].testeEscrito3}" th:value="${n.testeEscrito3}" id="input-table-notas" step="0.01">
+                            </td>
+                            <td>
+                                <input type="number" th:field="*{notas[__${iterStat.index}__].testeOral1}" th:value="${n.testeOral1}" id="input-table-notas" step="0.01">
+                            </td>
+                            <td>
+                                <input type="number" th:field="*{notas[__${iterStat.index}__].testeOral2}" th:value="${n.testeOral2}" id="input-table-notas" step="0.01">
+                            </td>
+                            <td >
+                                <input type="number" th:field="*{notas[__${iterStat.index}__].testeOral3}" th:value="${n.testeOral3}" id="input-table-notas" step="0.01">
+                            </td>
+                            <td>
+                                <input type="number" th:field="*{notas[__${iterStat.index}__].testeOral4}" th:value="${n.testeOral4}" id="input-table-notas" step="0.01">
+                            </td>
+                            <td>
+                                <input type="number" th:field="*{notas[__${iterStat.index}__].testeOral5}" th:value="${n.testeOral5}" id="input-table-notas" step="0.01">
+                            </td>
+                            <td>
+                                <input type="number" th:field="*{notas[__${iterStat.index}__].media}" th:value="${n.media}" id="input-table-notas" readonly>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </form>
+        </div>
     </main>
 
     <script th:src="@{/javascript/home.js}"></script>

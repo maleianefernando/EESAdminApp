@@ -56,13 +56,13 @@
 
     <main class="main-container" id="main-container">
         <div class="result-container" id="result-container">
-            <form th:action="@{/estudante/editar}" th:object="${e}" method="post">
-            <table class="table table-bordered border-primary" width="80%" border="1px">
-                <thead class="table table-dark">
-                    <tr>
-                        <th colspan="2">
-                            <!-- <form action=""> -->
-                                <select name="nivel" id="lista-nivel">
+
+            <form method="post" th:action="@{/estudante/editar}" th:object="${wrapper}" class="list-est-form">
+                <table class="table table-bordered border-primary" width="80%" border="1px">
+                    <thead class="table table-dark">
+                        <tr>
+                            <th colspan="2">
+                                <select name="nivel" id="select-nivel">
                                     <option value="all">All</option>
                                     <option value="A1 (Basico)">A1 (Básico)</option>
                                     <option value="B1 (Intermediário)">B1 (Intermediário)</option>
@@ -73,51 +73,63 @@
                                     <option value="Inglês para negócios">Inglês para negócios</option>
                                     <option value="Aulas online">Aulas online</option>
                                 </select>
-                            <!-- </form> -->
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome completo</th>
-                        <th>Email</th>
-                        <th>Data de nascimento</th>
-                        <th>Sexo</th>
-                        <th>Residencia</th>
-                        <th>Celular</th>
-                        <th>Nivel</th>
-                        <th>Horario</th>
-                    </tr>
-                </thead>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome completo</th>
+                            <th>Email</th>
+                            <th>Data de nascimento</th>
+                            <th>Sexo</th>
+                            <th>Residencia</th>
+                            <th>Celular</th>
+                            <th>Nivel</th>
+                            <th>Horario</th>
+                        </tr>
+                    </thead>
 
-                <tbody class="estudante-list">
-                    <tr th:each="e : ${estudante}">
-                        <td th:text="${e.idEstudante}">ID</td>
-                        <td><input type="text" th:value="${e.nomeCompleto}" id="input-table"></td>
-                        <td><input type="text" th:value="${e.email}" id="input-table"></td>
-                        <td><input type="text" th:value="${e.dataNascimento}" id="input-table"></td>
-                        <td><input type="text" th:value="${e.sexo}" id="input-table-sexo"></td>
-                        <td><input type="text" th:value="${e.morada}" id="input-table"></td>
-                        <td><input type="text" th:value="${e.numeroCelular}" id="input-table"></td>
-                        <td>
-                            <select name="nivel">
+                    <tbody class="estudante-list">
+                        <tr th:each="e, iterStat : ${wrapper.estudantes}">
 
-                                <option value="A1 (Basico)">A1 (Básico)</option>
-                                <option value="B1 (Intermediário)">B1 (Intermediário)</option>
-                                <option th:value="${e.nivel}" th:text="${e.nivel}" selected></option>
-                                <option value="C1 (Avançado)">C1 (Avançado)</option>
-                                <option value="D1 (Fluente)">D1 (Fluente)</option>
-                                <option value="Aulas domiciliares">Aulas domiciliares</option>
-                                <option value="Inglês Intensivo">Inglês Intensivo</option>
-                                <option value="Inglês para negócios">Inglês para negócios</option>
-                                <option value="Aulas online">Aulas online</option>
-                            </select>
-                        </td> <!--<input type="text" th:value="${e.nivel}" id="input-table">-->
-                        <td><input type="text" th:value="${e.horario}" id="input-table"></td>
-                    </tr>
-                    <!-- <button type="submit" class="btn btn-primary">Editar</button> -->
-                </tbody>
-            </table>
+                            <td><input type="text" th:field="*{estudantes[__${iterStat.index}__].idEstudante}" th:value="${e.idEstudante}" readonly id="input-table"></td>
+                            
+                            <td><input type="text" th:name="wrapper.estudantes[__${iterStat.index}__].nomeCompleto" th:field="*{estudantes[__${iterStat.index}__].nomeCompleto}" th:value="${e.nomeCompleto}" id="input-table"></td>
+
+                            <td><input type="text" th:name="wrapper.estudantes[__${iterStat.index}__].email" th:field="*{estudantes[__${iterStat.index}__].email}" th:value="${e.email}" id="input-table"></td>
+
+                            <td><input type="text" th:name="wrapper.estudantes[__${iterStat.index}__].dataNascimento" th:field="*{estudantes[__${iterStat.index}__].dataNascimento}" th:value="${e.dataNascimento}" id="input-table"></td>
+
+                            <td><input type="text" th:name="wrapper.estudantes[__${iterStat.index}__].sexo" th:field="*{estudantes[__${iterStat.index}__].sexo}" th:value="${e.sexo}" id="input-table-sexo"></td>
+                            
+                            <td><input type="text" th:name="wrapper.estudantes[__${iterStat.index}__].morada" th:field="*{estudantes[__${iterStat.index}__].morada}" th:value="${e.morada}" id="input-table"></td>
+                            
+                            <input type="hidden" th:name="wrapper.estudantes[__${iterStat.index}__].bairro" th:field="*{estudantes[__${iterStat.index}__].bairro}" th:value="${e.bairro}" id="input-table">
+
+                            <td><input type="text" th:name="wrapper.estudantes[__${iterStat.index}__].numeroCelular" th:field="*{estudantes[__${iterStat.index}__].numeroCelular}" th:value="${e.numeroCelular}" id="input-table"></td>
+                            
+                            <td>
+                                <select th:name="wrapper.estudantes[__${iterStat.index}__].nivel" th:field="*{estudantes[__${iterStat.index}__].nivel}">
+                                    <option value="A1 (Basico)">A1 (Básico)</option>
+                                    <option value="B1 (Intermediário)">B1 (Intermediário)</option>
+                                    <option th:value="${e.nivel}" th:text="${e.nivel}" selected></option>
+                                    <option value="C1 (Avançado)">C1 (Avançado)</option>
+                                    <option value="D1 (Fluente)">D1 (Fluente)</option>
+                                    <option value="Aulas domiciliares">Aulas domiciliares</option>
+                                    <option value="Inglês Intensivo">Inglês Intensivo</option>
+                                    <option value="Inglês para negócios">Inglês para negócios</option>
+                                    <option value="Aulas online">Aulas online</option>
+                                </select>
+                            </td>
+                            
+                            <td><input type="time" step="1800"  th:value="${e.horario}" th:field="*{estudantes[__${iterStat.index}__].horario}" id="input-table"></td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary">Editar</button>
             </form>
+
         </div>
     </main>
 

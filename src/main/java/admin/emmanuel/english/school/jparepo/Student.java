@@ -1,6 +1,7 @@
 package admin.emmanuel.english.school.jparepo;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +22,7 @@ public class Student {
     private String idEstudante;
 
     @Column(nullable = false)
-    private String nomeCompleto;
+    public String nomeCompleto;
 
     @Column(nullable = false)
     private String email;
@@ -30,7 +31,7 @@ public class Student {
     private LocalDate dataNascimento;
 
     @Column(nullable = false)
-    private String horario;
+    private LocalTime horario;
 
     @Column(nullable = false)
     private String morada;

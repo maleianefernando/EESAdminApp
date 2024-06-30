@@ -9,4 +9,5 @@ public interface StudentRepository extends JpaRepository <Student, String> {
     Student findByIdEstudante(String idEstudante);
 
     List<Student> findByNivel(String nivel);
+
 }

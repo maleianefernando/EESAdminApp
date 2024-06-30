@@ -59,27 +59,23 @@
             <form method="post" class="form" th:object="${user}" th:action="@{/minha_conta/alterar_palavra_passe}">
     
                 <div class="label-form">
-                    <label for="name">Nome completo</label> <input type="text"  readonly>
-                </div>
-    
-                <div class="label-form">
-                    <label for="email">Email</label> <input type="text"  readonly>
-                </div>
-    
-                <div class="label-form">
-                    <label for="nivel">Nivel</label> <input type="text"  readonly>
+                    <label for="id">ID do utilizador</label> <input type="text" th:value="${user.idUtilizador}" th:field="*{idUtilizador}" readonly>
                 </div>
 
                 <div class="label-form">
-                    <label for="id">ID</label> <input type="text" readonly>
+                    <label for="name">Nome completo</label> <input type="text" th:value="${user.nome}" th:field="*{nome}" readonly>
                 </div>
     
+                <div class="label-form">
+                    <label for="funcao">Funcao</label> <input type="text" th:value="${user.funcao}" th:field="*{funcao}" readonly>
+                </div>
+                <div style="color:black; font-weight: 800; font-size: 14pt; text-align: center;">Alterar Palavra-passe</div>
                 <div class="label-form">
                     <label for="password">Palavra-Passe</label> <input type="password">
                 </div>
     
                 <div class="label-form">
-                    <label for="password">Nova Palavra-Passe</label> <input type="password">
+                    <label for="password">Nova Palavra-Passe</label> <input type="password" th:field="*{password}">
                 </div>
     
                 <div class="label-form">

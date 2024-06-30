@@ -2,8 +2,6 @@ package admin.emmanuel.english.school.jparepo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import admin.emmanuel.english.school.TeacherController.Funcionario;
-
 import java.util.List;
 
 

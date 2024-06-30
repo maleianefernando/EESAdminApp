@@ -78,6 +78,10 @@ table{
     box-shadow: 5px 5px 35px red;
 }
 
+.list-est-form{
+    width: 100%;
+}
+
 form{
     width: 50%;
 }
@@ -134,10 +138,14 @@ form{
     width: 170px;
 }
 
+#input-table-notas{
+    width: 90px;
+}
+
 #input-table-sexo{
     width: 35px;
 }
 
-.estudante-list > tr > td > input {
+tbody > tr > td > input, .estudante-list > tr > td > select {
     border: none;
 }

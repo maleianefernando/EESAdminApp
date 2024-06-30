@@ -1,4 +1,4 @@
-package admin.emmanuel.english.school.TeacherController;
+package admin.emmanuel.english.school.jparepo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

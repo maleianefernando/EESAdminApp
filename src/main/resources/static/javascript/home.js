@@ -6,71 +6,7 @@ let cronogramaActividadesBtn = document.querySelector('#cronograma_de_actividade
 let proprinasBtn = document.querySelector('#proprinas');
 let materialAcademicoBtn = document.querySelector('#material-academico');
 let logoBtn = document.querySelector('#navbar-brand');
-let filtarLista = document.querySelector('#lista-nivel');
-
-// notasFrequenciaBtn.addEventListener('click', ()=>{
-//     resultContainer.innerHTML = `
-//             <table class="table table-bordered border-primary" width="80%" border="1px">
-//                 <thead >
-//                     <tr class="table-dark">
-//                         <th colspan="3" class="colspan">Teste Escrito</th>
-//                         <th colspan="5" class="colspan">Teste Oral</th>
-//                         <th class="colspan">Media</th>
-//                     </tr>
-//                     <tr>
-//                         <th>Teste 1</th>
-//                         <th>Teste 2</th>
-//                         <th>Teste 3</th>
-//                         <th>Teste 1</th>
-//                         <th>Teste 2</th>
-//                         <th>Teste 3</th>
-//                         <th>Teste 4</th>
-//                         <th>Teste 5</th>
-//                         <th>Media</th>
-//                     </tr>
-//                 </thead>
-
-//                 <tbody>
-//                     <tr>
-//                         <td>0.0</td>
-//                         <td>0.0</td>
-//                         <td>0.0</td>
-//                         <td>0.0</td>
-//                         <td>0.0</td>
-//                         <td>0.0</td>
-//                         <td>0.0</td>
-//                         <td>0.0</td>
-//                         <td>0.0</td>
-//                     </tr>
-//                 </tbody>
-//             </table>
-
-
-//             <table class="table table-bordered border-primary" width="80%" border="1px">
-//                 <thead >
-//                     <tr class="table-dark">
-//                         <th colspan="2" class="colspan">Exame</th>
-//                         <th class="colspan">Resultado</th>
-//                     </tr>
-//                     <tr>
-//                         <th>Exame Escrito</th>
-//                         <th>Exame Oral</th>
-//                         <th>Media Final</th>
-//                     </tr>
-//                 </thead>
-
-//                 <tbody>
-//                     <tr>
-
-//                         <td>0.0</td>
-//                         <td>0.0</td>
-//                         <td>0.0</td>
-//                     </tr>
-//                 </tbody>
-//             </table>
-    
-//     `;
-// });
+let filtarLista = document.querySelector('#select-nivel');
 
 
 try {
@@ -102,8 +38,8 @@ try {
         
         `;
     });
-} catch (error) {
-    
+} catch (err) {
+    console.log(err)
 }
 
 try {
@@ -112,18 +48,69 @@ try {
         
         `;
     });
-} catch (error) {
-    
+} catch (err) {
+    console.log(err);
 }
 
+/*
+* Script a nivel da rota de todos templates com alguma tabela de exibicao de dados de estudantes
+*/
 try {
     filtarLista.addEventListener('change', ()=>{
         const selectedValue = event.target.value;
-        
+        // alert(window.location.pathname)
+
+        for(let child of filtarLista.children){
+            (selectedValue == child.value) ? child.selected=true : console.log(false)
+        }
+
         if(selectedValue){
-            window.location.href = `listar?nivel=${selectedValue}`;
+            if(window.location.pathname === '/estudante/listar'){
+                window.location.href = `listar?nivel=${selectedValue}`;
+            }
+            else if(window.location.pathname === '/estudante/desempenho'){
+                window.location.href = `desempenho?nivel=${selectedValue}`;
+            }
         }
     })
-} catch (error) {
-    console.log(error);
+} catch (err) {
+    console.log(err);
+}
+
+/*
+* Script a nivel da rota do template de registo de estudantes
+*/
+try{
+    if(window.location.href == 'http://localhost:9091/estudante/registar?success=true'){
+        window.addEventListener('DOMContentLoaded', ()=>{
+            window.alert('Estudante registado');
+        })
+        
+    }
+    else if(window.location.href == 'http://localhost:9091/estudante/registar?success=false'){
+        window.addEventListener('DOMContentLoaded', ()=>{
+            window.alert('Não foi possivel registar estudante, ocorreu um erro');
+        })
+    }
+}
+catch(err){
+    console.log(err);
+}
+
+/*
+* Script a nivel da rota do template de pagamento de mensalidades
+*/
+try{
+    if(window.location.href == 'http://localhost:9091/estudante/mensalidades?payment_succes=true'){
+        window.addEventListener('DOMContentLoaded', ()=>{
+            window.alert('Pagamento efectuado com sucesso!')
+        })
+    }
+    else if(window.location.href == 'http://localhost:9091/estudante/mensalidades?payment_succes=false'){
+        window.addEventListener('DOMContentLoaded', ()=>{
+            window.alert('Ocorreu um erro ao tentar efectuao pagamento!')
+        })
+    }
+}catch(err){
+    console.log(err);
 }
