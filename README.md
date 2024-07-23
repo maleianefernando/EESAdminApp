@@ -51,11 +51,14 @@ Run the app:
 If your are machine are not able to run the app using this commands tou can just run on your IDE going to the run button.
 
 #### 5. Login Process
-Now [http://localhost:9090/](http://localhost:9091/) open your browser and sign in any account.
+Now [http://localhost:9091/](http://localhost:9091/) open your browser and sign in any account.
 
 ##### 6. Credentials
 - Your can find the credentias on the table ```utilizadores```.
 - The username is in the name column and the password not encoded is in the ```senha``` column.
+
+#### 7. Logout Process
+- To logout the application just request the ```/logout``` api endpoint: [http://localhost:9091/logout](http://localhost:9091/logout)
 
 ## Author
 Fernando Paulo Maleiane
